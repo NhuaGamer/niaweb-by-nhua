@@ -1,0 +1,32 @@
+html,body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.err {
+  background-image: url('https://i.imgur.com/JilIi6s.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.iframe {
+  border-radius: 20px;
+  transition: 0.3s;
+  &:hover {
+    transition: 0.3s;
+    box-shadow: 0px 0px 20px #8cddff94;
+  }
+}
+
+input {
+  transition: 0.3s;
+}
+input:hover {
+  transition: 0.3s;
+  box-shadow: 0px 0px 6px #e68cff94;
+}

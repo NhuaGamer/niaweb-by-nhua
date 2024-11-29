@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Home Page</title>
+  <link rel="icon" href="/img/logoNIA.jpg">
+  <!-- Include SweetAlert2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <!-- Include SweetAlert2 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+  <%-include('components/nav')%>
+  <main class="container mt-3 mb-3">
+    <% if (typeof user !== 'undefined') {
+      %>
+      <h1 class="text-center">Hello, <%= user.name %></h1>
+      <h3 class="text-center">Name: <%= user.name %></h3>
+      <h3 class="text-center">Email: <%= user.email %></h3>
+      <hr>
+      <% if (videos && videos.length > 0) {
+        %>
+        <% videos.forEach(video => {
+          %>
+          <div class="video-item">
+            <h3 class="text-center mb-2">Title: <%= video.title %></h3>
+            <div class="d-flex justify-content-center">
+              <iframe src="<%= video.url %>" class="iframe mb-2" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="text-center mb-2">
+              Comments: <%= video.comment %>
+            </p>
+            <p class="text-center mb-2">
+              Link1: <a href="<%= video.link1 %>"><%= video.Tlink1 %></a>
+            </p>
+            <p class="text-center mb-2">
+              Link2: <a href="<%= video.link2 %>"><%= video.Tlink2 %></a>
+            </p>
+            <p class="text-center mb-2">
+              Link3: <a href="<%= video.link3 %>"><%= video.Tlink3 %></a>
+            </p>
+          </div>
+          <%
+        }) %>
+        <%
+      } else {
+        %>
+        <p class="text-center">
+          No videos found
+        </p>
+        <%
+      } %>
+      <%
+    } else {
+      %>
+      <h1 class="text-center">Hello, User</h1>
+      <p class="text-center">
+        Please <a href="/login">Login</a>.
+      </p>
+      <%
+    } %>
+  </main>
+
+  <%-include('components/footer')%>
+  
+  <script src="/js/SweetAlert.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
